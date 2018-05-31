@@ -1,8 +1,12 @@
 language: node_js
-sudo: false
+sudo: required
+services:
+  - postgresql
 node_js:
   - "9.0"
   - "10.0"
+before_script:
+  - psql -c 'create database graphqlapi;' -U postgres
 install:
   - yarn install
 script:
